@@ -5,8 +5,7 @@
 /.pnp
 .pnp.js
 
-#network
-/.vscode
+
 
 #apiKey
 /src/config.js

@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+
+
 import axios from 'axios';
 
 import Search from './Search';
@@ -18,7 +20,7 @@ class App extends Component {
     this.performSearch();
   }
 
-  performSearch = ( query='cats') => {
+  performSearch = ( query ) => {
     axios(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=12&format=json&nojsoncallback=1`)
       .then(response => this.setState({
         result : response.data.photos.photo
@@ -31,11 +33,12 @@ class App extends Component {
     const { result } = this.state
   
     return (
-      <div className="container">
-        <Search onSearch={this.performSearch}/>
-        <Nav />
-        <Gallery results={result}/>
-      </div>
+    
+        <div className="container">
+          <Search onSearch={this.performSearch}/> 
+          <Nav onSearch={this.performSearch}/>
+          <Gallery results={result}/> 
+        </div>
     );
   }
 }

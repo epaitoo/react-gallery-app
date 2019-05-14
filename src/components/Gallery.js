@@ -1,6 +1,8 @@
 import React from 'react';
 
 
+
+
 const Gallery = ({ results }) => {
   
   let images = results.map(photo => 
@@ -15,6 +17,8 @@ const Gallery = ({ results }) => {
       <ul>
         {images}
       </ul>
+
+      {/* Nav Components Routes */}
       
   </div>
   );

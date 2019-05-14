@@ -1,14 +1,20 @@
 import React from 'react';
 
-const Nav = () => {
+const Nav = ({ onSearch }) => {
+
+  const clickedItem = (e) => {
+    e.preventDefault();
+    onSearch(e.target.textContent);
+  }
+
   return(
     <nav className="main-nav">
       <ul>
-        <li><a href='a'>Cats</a></li>
-        <li><a href='a'>Dogs</a></li>
-        <li><a href='a'>Computers</a></li>
+        <li onClick={clickedItem}><a href='/#'>Cats</a></li>
+        <li onClick={clickedItem}><a href='/#'>Dogs</a></li>
+        <li onClick={clickedItem}><a href='/#'>Computers</a></li>
       </ul>
-  </nav>
+    </nav>
   );
 }
 

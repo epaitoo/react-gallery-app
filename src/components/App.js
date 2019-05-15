@@ -16,14 +16,12 @@ class App extends Component {
 
   state = {
     result : [],
-    searchQuery : 'cats',
-    loading : true
+    searchQuery : ''
   }
 
   componentDidMount() {
     const { searchQuery } = this.state;
     this.performSearch(searchQuery);
-    this.setState({ loading: false });
   }
 
   performSearch = ( query ) => {
@@ -37,14 +35,17 @@ class App extends Component {
 
 
   render () {
-    const { result, searchQuery, loading } = this.state
+    const { result, searchQuery } = this.state
   
     return (
       <BrowserRouter>
         <div className="container">
+
           <Route path='/' render={ () => <Search onSearch={this.performSearch}/> } />
+          <Route exact path='/search/:name'  Component ={ Search } />
           <Route path='/' render={ () => <Nav onSearch={this.performSearch}/> } />
-          <Route path='/' render={ () => <Gallery results={result} name={searchQuery} isLoading={loading}/> } /> 
+          <Route path='/' render={ () => <Gallery results={result} name={searchQuery} /> } /> 
+
         </div>
       </BrowserRouter>
     );

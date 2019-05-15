@@ -16,7 +16,9 @@ class Search extends Component {
     e.currentTarget.reset();
   }
 
+  
   render () {
+    
     return(
       <form className="search-form" onSubmit={this.onSearchSubmit}>
         <input type="search" 

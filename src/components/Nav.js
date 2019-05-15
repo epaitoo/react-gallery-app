@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Nav = ({ onSearch }) => {
 
@@ -10,9 +11,9 @@ const Nav = ({ onSearch }) => {
   return(
     <nav className="main-nav">
       <ul>
-        <li onClick={clickedItem}><a href='/#'>Cats</a></li>
-        <li onClick={clickedItem}><a href='/#'>Dogs</a></li>
-        <li onClick={clickedItem}><a href='/#'>Computers</a></li>
+        <li onClick={clickedItem}><NavLink to='/cats'>Cats</NavLink></li>
+        <li onClick={clickedItem}><NavLink to='/dogs'>Dogs</NavLink></li>
+        <li onClick={clickedItem}><NavLink to='/computers'>Computers</NavLink></li>
       </ul>
     </nav>
   );

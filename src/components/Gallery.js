@@ -1,26 +1,22 @@
 import React from 'react';
+import GalleryList from './GalleryList';
+import NotFound from './NotFound'
 
-
-
-
-const Gallery = ({ results }) => {
-  
-  let images = results.map(photo => 
-    <li key={photo.id}>
-      <img src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} alt={photo.title}/>
-    </li>
-  )
+const Gallery = ({ results, name, isLoading }) => {
   
   return(
     <div className="photo-container">
-      <h2>Results</h2>
-      <ul>
-        {images}
-      </ul>
-
-      {/* Nav Components Routes */}
-      
-  </div>
+      <h2>{name}</h2>
+      { //loading
+        isLoading ? <p>LOADING...</p> 
+        : <GalleryList results={results} />
+      } 
+      {
+        //search Not found
+        (results.length === 0) ? <NotFound />
+        : <GalleryList results={results} />
+      }
+    </div>
   );
 }
 

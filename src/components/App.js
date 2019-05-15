@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
-
+import {
+  BrowserRouter,
+  Route,
+} from 'react-router-dom'
 
 import axios from 'axios';
 
@@ -9,15 +12,18 @@ import Gallery from './Gallery';
 import apiKey from '../config';
 
 
-
 class App extends Component {
 
   state = {
-    result : []
+    result : [],
+    searchQuery : 'cats',
+    loading : true
   }
 
   componentDidMount() {
-    this.performSearch();
+    const { searchQuery } = this.state;
+    this.performSearch(searchQuery);
+    this.setState({ loading: false });
   }
 
   performSearch = ( query ) => {
@@ -26,19 +32,21 @@ class App extends Component {
         result : response.data.photos.photo
       }))
       .catch(error => console.log(error))
+      this.setState({ searchQuery : query })
   }
 
 
   render () {
-    const { result } = this.state
+    const { result, searchQuery, loading } = this.state
   
     return (
-    
+      <BrowserRouter>
         <div className="container">
-          <Search onSearch={this.performSearch}/> 
-          <Nav onSearch={this.performSearch}/>
-          <Gallery results={result}/> 
+          <Route path='/' render={ () => <Search onSearch={this.performSearch}/> } />
+          <Route path='/' render={ () => <Nav onSearch={this.performSearch}/> } />
+          <Route path='/' render={ () => <Gallery results={result} name={searchQuery} isLoading={loading}/> } /> 
         </div>
+      </BrowserRouter>
     );
   }
 }

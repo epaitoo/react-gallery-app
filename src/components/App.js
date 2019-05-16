@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {
-  BrowserRouter,
-  Route,
+  BrowserRouter as Router,
+  Route, Redirect
 } from 'react-router-dom'
 
 import axios from 'axios';
@@ -16,7 +16,7 @@ class App extends Component {
 
   state = {
     result : [],
-    searchQuery : ''
+    searchQuery : 'cats'
   }
 
   componentDidMount() {
@@ -38,16 +38,14 @@ class App extends Component {
     const { result, searchQuery } = this.state
   
     return (
-      <BrowserRouter>
+      <Router>
         <div className="container">
-
-          <Route path='/' render={ () => <Search onSearch={this.performSearch}/> } />
-          <Route exact path='/search/:name'  Component ={ Search } />
-          <Route path='/' render={ () => <Nav onSearch={this.performSearch}/> } />
-          <Route path='/' render={ () => <Gallery results={result} name={searchQuery} /> } /> 
-
+            <Route exact path='/' render={ () => <Redirect to='/cats'/> } />
+            <Route path='/' render={ (obj) => <Search onSearch={this.performSearch} obj={obj} /> } />
+            <Route path='/' render={ () => <Nav onSearch={this.performSearch} /> } />
+            <Route path='/' render={ () => <Gallery results={result} name={searchQuery}  /> } />
         </div>
-      </BrowserRouter>
+      </Router>
     );
   }
 }

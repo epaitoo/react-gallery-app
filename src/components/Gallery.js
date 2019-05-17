@@ -1,20 +1,16 @@
 import React from 'react';
+import Spinner from 'react-spinner-material';
 import GalleryList from './GalleryList';
-// import NotFound from './NotFound'
 
-const Gallery = ({ results, name}) => {
+
+const Gallery = ({ results, name, loading }) => {
   
   return(
     <div className="photo-container">
       <h2>{name}</h2>
-      
-      <GalleryList results={results} />
-       
-      {/* {
-        //search Not found
-        (results.length === 0) ? <NotFound />
-        : <GalleryList results={results} />
-      } */}
+      { loading ? (<Spinner size={50} spinnerColor={"#B22222"} spinnerWidth={2} visible={true}  />)
+        :  (<GalleryList results={results}/>) 
+      }
     </div>
   );
 }

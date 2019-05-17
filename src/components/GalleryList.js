@@ -1,4 +1,5 @@
 import React from 'react'
+import NotFound from './NotFound'
 
 const GalleryList = ({ results }) => {
   let images = results.map(photo => 
@@ -6,9 +7,10 @@ const GalleryList = ({ results }) => {
       <img src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} alt={photo.title}/>
     </li>
   )
+
   return (
     <ul>
-      {images}
+      { results.length > 0  ? images : <NotFound /> }
     </ul>
   );
 

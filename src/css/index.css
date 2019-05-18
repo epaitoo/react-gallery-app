@@ -95,6 +95,7 @@ input {
 
 .spinner {
   margin: auto;
+  margin-top: 90px;
 }
 
 @media only screen and (max-width: 767px)  {

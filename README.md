@@ -1,4 +1,20 @@
+# React Gallery App
+
+An image gallery app built with React. 
+Used React Router to set up routes for three default topic pages and a search page.
+Axios was to fetch data from the [Flickr API](https://api.flickr.com/) to display images in the app.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+### Get an API Key from Flickr
+
+* Create yahoo account/use tumblr account to sign in
+* Apply for a non-commercial API key
+* You’ll need to edit the config.js file in the src/config.js
+* The config.js file should look something like this:
+
+`const apiKey = 'YOUR API KEY';
+export default apiKey;`
+
 
 ## Available Scripts
 

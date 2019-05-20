@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 
 class Search extends Component {
 
+
   onSearchSubmit = (e) => {
     e.preventDefault();
     let searchTerm = this.query.value;

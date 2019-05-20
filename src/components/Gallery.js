@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import GalleryItem from './GalleryItem';
 import NoResult from './NoResult';
+
 
 
 const Gallery = ({results, name}) => {
@@ -24,6 +26,11 @@ const Gallery = ({results, name}) => {
      
     </div>
   );
+}
+
+Gallery.propTypes = {
+  name : PropTypes.string.isRequired, 
+  images : PropTypes.arrayOf(PropTypes.object)
 }
 
 export default Gallery;

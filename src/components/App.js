@@ -55,26 +55,26 @@ class App extends Component {
 
     return (
       <Router>
-        <Header onSearch={this.performSearch}/>
         <div className="container">
-          <Switch>
-            <Route exact path='/' render={() => (isLoading) ? <Spinner size={50} spinnerColor={"#B22222"} spinnerWidth={2} visible={true} /> 
-              : <Redirect to='/cats' /> } />
+          <Header onSearch={this.performSearch}/>
+            <Switch>
+              <Route exact path='/' render={() => (isLoading) ? <Spinner size={60} spinnerColor={"#4ac0d5"} spinnerWidth={7} visible={true} /> 
+                : <Redirect to='/cats' /> } />
 
-            <Route exact path='/search/:name' render={() => (isLoading) ? <Spinner size={50} spinnerColor={"#B22222"} spinnerWidth={2} visible={true} /> 
-              : <Gallery results={otherImages} name={queryName} /> } />
+              <Route exact path='/search/:name' render={() => (isLoading) ? <Spinner size={60} spinnerColor={"#4ac0d5"} spinnerWidth={7} visible={true} /> 
+                : <Gallery results={otherImages} name={queryName} /> } />
 
-            <Route exact path='/cats' render={() => (isLoading) ? <Spinner size={50} spinnerColor={"#B22222"} spinnerWidth={2} visible={true} /> 
-              : <Gallery results={cats} name='Cats' /> } />
+              <Route exact path='/cats' render={() => (isLoading) ? <Spinner size={60} spinnerColor={"#4ac0d5"} spinnerWidth={7} visible={true} /> 
+                : <Gallery results={cats} name='Cats' /> } />
 
-            <Route exact path='/dogs' render={() => (isLoading) ? <Spinner size={50} spinnerColor={"#B22222"} spinnerWidth={2} visible={true} /> 
-              :  <Gallery results={dogs} name='Dogs' /> } />
+              <Route exact path='/dogs' render={() => (isLoading) ? <Spinner size={60} spinnerColor={"#4ac0d5"} spinnerWidth={7} visible={true} /> 
+                :  <Gallery results={dogs} name='Dogs' /> } />
 
-            <Route exact path='/computers' render={() => (isLoading) ? <Spinner size={50} spinnerColor={"#B22222"} spinnerWidth={2} visible={true} /> 
-              : <Gallery results={computers} name='Computers' /> } />
+              <Route exact path='/computers' render={() => (isLoading) ? <Spinner size={60} spinnerColor={"#4ac0d5"} spinnerWidth={7} visible={true} /> 
+                : <Gallery results={computers} name='Computers' /> } />
 
-            <Route component={PageNotFound}/>
-          </Switch>
+              <Route component={PageNotFound}/>
+            </Switch>
         </div>
       </Router>
     );
